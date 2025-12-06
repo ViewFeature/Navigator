@@ -20,7 +20,7 @@ public enum URLParser {
 	/// - "/home" → "home"
 	/// - "/user/profile" → "user/profile"
 	/// - "article" → "article"
-	public nonisolated static func routeKey(from path: String) -> String {
+	nonisolated public static func routeKey(from path: String) -> String {
 		path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
 	}
 
@@ -29,7 +29,7 @@ public enum URLParser {
 	/// Examples:
 	/// - "/user/profile" → ["user", "profile"]
 	/// - "home" → ["home"]
-	public nonisolated static func parsePathComponents(_ path: String) -> [String] {
+	nonisolated public static func parsePathComponents(_ path: String) -> [String] {
 		let cleanPath = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
 		return cleanPath.isEmpty ? [] : cleanPath.split(separator: "/").map(String.init)
 	}
@@ -47,7 +47,7 @@ public enum URLParser {
 	///   - queryItems: Array of URL query items to search
 	/// - Returns: Converted parameter value (empty strings are valid and processed)
 	/// - Throws: NavigatorParseError.missingParameter if not found, .invalidParameter if conversion fails
-	public nonisolated static func param<T>(_ name: String, from queryItems: [URLQueryItem]) throws -> T
+	nonisolated public static func param<T>(_ name: String, from queryItems: [URLQueryItem]) throws -> T
 	where T: LosslessStringConvertible {
 		guard let queryItem = queryItems.first(where: { $0.name == name }),
 			let value = queryItem.value
@@ -71,7 +71,7 @@ public enum URLParser {
 	///   - name: Parameter name to extract (case-sensitive)
 	///   - queryItems: Array of URL query items to search
 	/// - Returns: Converted value, or nil if missing/invalid
-	public nonisolated static func optionalParam<T>(_ name: String, from queryItems: [URLQueryItem]) -> T?
+	nonisolated public static func optionalParam<T>(_ name: String, from queryItems: [URLQueryItem]) -> T?
 	where T: LosslessStringConvertible {
 		guard let queryItem = queryItems.first(where: { $0.name == name }),
 			let value = queryItem.value
@@ -95,7 +95,7 @@ public enum URLParser {
 	///   - scheme: Custom URL scheme (e.g., "myapp", "example")
 	/// - Returns: Valid URL for deep linking
 	/// - Throws: NavigatorParseError.invalidURL if URL construction fails
-	public nonisolated static func constructURL(path: String, queryItems: [URLQueryItem], scheme: String) throws -> URL {
+	nonisolated public static func constructURL(path: String, queryItems: [URLQueryItem], scheme: String) throws -> URL {
 		var components = URLComponents()
 		components.scheme = scheme
 		components.host = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))

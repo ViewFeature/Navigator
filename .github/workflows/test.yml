@@ -38,9 +38,13 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: Build
+        env:
+          SWIFT_PACKAGE_PREBUILT_DOWNLOADS: "0"
         run: swift build --build-tests
 
       - name: Run Tests
+        env:
+          SWIFT_PACKAGE_PREBUILT_DOWNLOADS: "0"
         run: swift test --parallel --enable-code-coverage
 
       - name: Generate Code Coverage

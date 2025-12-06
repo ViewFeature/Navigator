@@ -215,7 +215,7 @@ extension RouteMacro {
 
 		let functionBody: DeclSyntax =
 			"""
-			\(raw: publicModifier)nonisolated func hash(into hasher: inout Hasher) {
+			nonisolated \(raw: publicModifier)func hash(into hasher: inout Hasher) {
 				switch self {
 				\(raw: caseClauses.joined(separator: "\n\t\t"))
 				}
@@ -260,7 +260,7 @@ extension RouteMacro {
 
 		let functionBody: DeclSyntax =
 			"""
-			\(raw: publicModifier)nonisolated static func == (lhs: Self, rhs: Self) -> Bool {
+			nonisolated \(raw: publicModifier)static func == (lhs: Self, rhs: Self) -> Bool {
 				switch (lhs, rhs) {
 				\(raw: caseClauses.joined(separator: "\n\t\t"))
 				}
