@@ -111,7 +111,7 @@ public final class Navigator<Route: Navigatable> {
 	///
 	/// - Parameter count: Number of routes to pop (must be positive)
 	public func pop(count: Int) {
-		guard !isEmpty else { return }
+		guard !path.isEmpty else { return }
 
 		let actualCount = min(count, path.count)
 		guard actualCount > 0 else { return }

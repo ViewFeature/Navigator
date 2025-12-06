@@ -54,9 +54,30 @@ enum MockRoute: Navigatable {
 		let host = components.host ?? ""
 		let queryItems = components.queryItems ?? []
 
+		return parseRoute(host: host, path: url.path, queryItems: queryItems)
+	}
+
+	private static func parseRoute(host: String, path: String, queryItems: [URLQueryItem]) -> MockRoute? {
 		switch host {
 		case "home":
 			return .home
+		case "settings":
+			return parseSettings(path: path, queryItems: queryItems)
+		default:
+			return parseParameterizedRoute(host: host, queryItems: queryItems)
+		}
+	}
+
+	private static func parseSettings(path: String, queryItems: [URLQueryItem]) -> MockRoute? {
+		if path.hasPrefix("/detail") {
+			guard let section: String = URLParser.optionalParam("section", from: queryItems) else { return nil }
+			return .settingsDetail(section: section)
+		}
+		return .settings
+	}
+
+	private static func parseParameterizedRoute(host: String, queryItems: [URLQueryItem]) -> MockRoute? {
+		switch host {
 		case "profile":
 			guard let userId: String = URLParser.optionalParam("userId", from: queryItems) else { return nil }
 			return .profile(userId: userId)
@@ -68,12 +89,6 @@ enum MockRoute: Navigatable {
 			guard let id: Int = URLParser.optionalParam("id", from: queryItems) else { return nil }
 			let showComments: Bool = URLParser.optionalParam("showComments", from: queryItems) ?? false
 			return .article(id: id, showComments: showComments)
-		case "settings":
-			if url.path.hasPrefix("/detail") {
-				guard let section: String = URLParser.optionalParam("section", from: queryItems) else { return nil }
-				return .settingsDetail(section: section)
-			}
-			return .settings
 		case "detail":
 			guard let id: String = URLParser.optionalParam("id", from: queryItems) else { return nil }
 			return .detail(id: id)

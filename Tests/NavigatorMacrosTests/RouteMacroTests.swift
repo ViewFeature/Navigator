@@ -5,6 +5,9 @@
 //  Created by Claude on 2025/11/12.
 //
 
+// Macro tests require large expected string literals, so disable length rules
+// swiftlint:disable function_body_length type_body_length line_length
+
 import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
 import Testing
@@ -842,3 +845,5 @@ struct RouteMacroTests {
 		)
 	}
 }
+
+// swiftlint:enable function_body_length type_body_length line_length

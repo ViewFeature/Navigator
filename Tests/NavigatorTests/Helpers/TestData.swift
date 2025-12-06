@@ -36,8 +36,8 @@ struct TestData {
     ]
 
     /// Routes for performance testing
-    static let performanceRoutes: [MockRoute] = Array(0..<1000).map { i in
-        MockRoute.profile(userId: "performance_user_\(i)")
+    static let performanceRoutes: [MockRoute] = Array(0..<1000).map { index in
+        MockRoute.profile(userId: "performance_user_\(index)")
     }
 
     // MARK: - Common Query Parameters
@@ -157,21 +157,21 @@ struct TestData {
 
     /// Large dataset for performance testing
     static func generatePerformanceRoutes(count: Int) -> [MockRoute] {
-        (0..<count).map { i in
+        (0..<count).map { index in
             let routeTypes: [MockRoute] = [
                 .home,
-                .profile(userId: "perf_user_\(i)"),
-                .list(filter: "perf_filter_\(i)"),
-                .search(query: "perf_query_\(i)", limit: i % 100)
+                .profile(userId: "perf_user_\(index)"),
+                .list(filter: "perf_filter_\(index)"),
+                .search(query: "perf_query_\(index)", limit: index % 100)
             ]
-            return routeTypes[i % routeTypes.count]
+            return routeTypes[index % routeTypes.count]
         }
     }
 
     /// Large query parameter set for performance testing
     static func generatePerformanceQueryItems(count: Int) -> [URLQueryItem] {
-        (0..<count).map { i in
-            URLQueryItem(name: "param\(i)", value: "value\(i)")
+        (0..<count).map { index in
+            URLQueryItem(name: "param\(index)", value: "value\(index)")
         }
     }
 

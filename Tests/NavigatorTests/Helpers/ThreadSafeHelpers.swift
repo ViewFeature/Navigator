@@ -51,6 +51,10 @@ final class TabSwitchTracker: @unchecked Sendable {
 		lock.withLock { _count }
 	}
 
+	var isEmpty: Bool {
+		lock.withLock { _count == 0 }
+	}
+
 	func recordSwitch<Tab: Hashable>(from: Tab, to: Tab) {
 		lock.withLock {
 			_count += 1
