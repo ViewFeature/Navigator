@@ -1,11 +1,10 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Test the Navigator functionality
 @MainActor
 struct NavigatorTests {
-
     // MARK: - Basic Navigation Tests
 
     @Test("Basic navigation works correctly")
@@ -14,7 +13,7 @@ struct NavigatorTests {
 
         // Test initial state
         #expect(router.path.isEmpty)
-        #expect(router.path.count == 0)
+        #expect(router.path.isEmpty)
         #expect(router.path.last == nil)
 
         // Test navigation
@@ -160,7 +159,7 @@ struct NavigatorTests {
 
         // Test empty state
         #expect(router.path.isEmpty)
-        #expect(router.path.count == 0)
+        #expect(router.path.isEmpty)
         #expect(router.path.last == nil)
 
         // Test with navigation
@@ -177,7 +176,7 @@ struct NavigatorTests {
         // Test after pop to root
         router.popToRoot()
         #expect(router.path.isEmpty)
-        #expect(router.path.count == 0)
+        #expect(router.path.isEmpty)
         #expect(router.path.last == nil)
     }
 

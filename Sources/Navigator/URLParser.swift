@@ -12,7 +12,6 @@ import Foundation
 /// All methods are `nonisolated` because this is a pure utility enum
 /// with no mutable state or side effects, allowing calls from any actor context.
 public enum URLParser {
-
 	// MARK: - Route Key Extraction
 
 	/// Extract route key from URL path
@@ -22,7 +21,7 @@ public enum URLParser {
 	/// - "/user/profile" → "user/profile"
 	/// - "article" → "article"
 	public nonisolated static func routeKey(from path: String) -> String {
-		return path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+		path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
 	}
 
 	/// Parse path components from URL path
@@ -111,4 +110,3 @@ public enum URLParser {
 		return url
 	}
 }
-

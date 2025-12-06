@@ -20,7 +20,7 @@ public enum NavigatorParseError: Error, LocalizedError, Equatable, Sendable {
 	case invalidParameter(name: String, value: String, expected: String)
 
 	public var description: String {
-		return errorDescription ?? "Unknown error"
+		errorDescription ?? "Unknown error"
 	}
 
 	public var errorDescription: String? {

@@ -1,6 +1,6 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Tests for NavigatorParseError enum.
 ///
@@ -12,7 +12,6 @@ import Foundation
 @Suite("NavigatorParseError Tests")
 @MainActor
 struct NavigatorParseErrorTests {
-
     // MARK: - Error Case Tests
 
     @Test("Invalid URL error description")
@@ -54,7 +53,6 @@ struct NavigatorParseErrorTests {
         // Then
         #expect(description == "Invalid parameter 'page': got 'abc', expected Int")
     }
-
 
     // MARK: - LocalizedError Tests
 
@@ -177,7 +175,6 @@ struct NavigatorParseErrorTests {
         #expect(error1 != error2)
     }
 
-
     // MARK: - Sendable Conformance Test
 
     @Test("Sendable conformance verification")
@@ -189,7 +186,7 @@ struct NavigatorParseErrorTests {
         // If this compiles, Sendable conformance is working
         await withCheckedContinuation { continuation in
             Task {
-                let _ = error
+                _ = error
                 continuation.resume()
             }
         }

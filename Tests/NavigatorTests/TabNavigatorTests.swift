@@ -1,11 +1,10 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Test the TabNavigator functionality including TabNavigationMiddleware
 @MainActor
 struct TabNavigatorTests {
-
     // MARK: - Basic Tab Switching Tests
 
     @Test("Basic tab switching works correctly")
@@ -72,7 +71,7 @@ struct TabNavigatorTests {
         router.addMiddleware(TestTabNavigationMiddleware(tracker: tabTracker))
 
         // Test middleware execution
-        #expect(tabTracker.count == 0)
+        #expect(tabTracker.isEmpty)
         #expect(tabTracker.lastFromTab(as: MockTab.self) == nil)
         #expect(tabTracker.lastToTab(as: MockTab.self) == nil)
 

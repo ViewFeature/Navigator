@@ -37,7 +37,6 @@ import SwiftUI
 @MainActor
 @Observable
 public final class Navigator<Route: Navigatable> {
-
 	// MARK: - Navigation State
 
 	/// Current navigation path stack.
@@ -112,7 +111,7 @@ public final class Navigator<Route: Navigatable> {
 	///
 	/// - Parameter count: Number of routes to pop (must be positive)
 	public func pop(count: Int) {
-		guard count > 0 else { return }
+		guard !isEmpty else { return }
 
 		let actualCount = min(count, path.count)
 		guard actualCount > 0 else { return }

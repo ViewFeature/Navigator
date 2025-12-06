@@ -1,6 +1,6 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Integration tests for Navigatable protocol.
 ///
@@ -12,7 +12,6 @@ import Foundation
 @Suite("Navigatable Tests")
 @MainActor
 struct NavigatableTests {
-
     // MARK: - URL -> Route Parsing Tests
 
     @Test("Parse simple route")

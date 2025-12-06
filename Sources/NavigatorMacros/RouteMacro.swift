@@ -18,7 +18,6 @@ import SwiftSyntaxMacros
 /// - Compile-time validation with warnings for typos
 /// - Uses URLParser.param() from v4.2.1 for concise code generation
 public struct RouteMacro: MemberMacro, ExtensionMacro {
-
 	// MARK: - MemberMacro
 
 	public static func expansion(

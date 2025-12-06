@@ -55,7 +55,6 @@ import SwiftUI
 @MainActor
 @Observable
 public final class TabNavigator<Tab: Hashable> {
-
 	// MARK: - Tab State
 
 	/// Currently selected tab.
@@ -117,7 +116,7 @@ public final class TabNavigator<Tab: Hashable> {
 	/// - Parameter tab: The tab to check
 	/// - Returns: true if the tab is currently selected, false otherwise
 	public func isSelected(_ tab: Tab) -> Bool {
-		return selectedTab == tab
+		selectedTab == tab
 	}
 
 	// MARK: - Middleware Management

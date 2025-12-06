@@ -23,7 +23,6 @@ import Testing
 @Suite("Route Macro Tests")
 @MainActor
 struct RouteMacroTests {
-
 	// MARK: - Test Configuration
 
 	private let testMacros: [String: Macro.Type] = [

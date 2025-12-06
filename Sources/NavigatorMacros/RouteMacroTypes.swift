@@ -68,7 +68,7 @@ extension String {
 		"Any", "as", "await", "catch", "false", "is", "nil", "self", "Self",
 		"super", "throws", "true", "try",
 		// Pattern keywords
-		"_",
+		"_"
 	]
 }
 

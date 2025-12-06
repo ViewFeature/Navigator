@@ -1,6 +1,6 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Integration tests for @Route macro runtime behavior.
 ///
@@ -12,7 +12,6 @@ import Foundation
 @Suite("Macro Integration Tests")
 @MainActor
 struct MacroIntegrationTests {
-
     // MARK: - Test Route Definition
 
     /// Test route using @Route macro for integration testing.

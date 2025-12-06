@@ -1,6 +1,6 @@
-import Testing
 import Foundation
 @testable import Navigator
+import Testing
 
 /// Tests for URLParser utilities.
 ///
@@ -13,7 +13,6 @@ import Foundation
 @Suite("URLParser Tests")
 @MainActor
 struct URLParserTests {
-
     // MARK: - Path Parsing Tests
 
     @Test("Parse path components with empty path")

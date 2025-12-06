@@ -87,9 +87,9 @@ extension RouteMacro {
 					""")
 			} else {
 				let paramNames = route.parameters.map { "let \($0.escapedName)" }.joined(separator: ", ")
-				let queryItems = route.parameters.map {
-					"URLQueryItem(name: \"\($0.name)\", value: String(\($0.escapedName)))"
-				}.joined(separator: ", ")
+				let queryItems = route.parameters
+					.map { "URLQueryItem(name: \"\($0.name)\", value: String(\($0.escapedName)))" }
+					.joined(separator: ", ")
 
 				caseClauses.append(
 					"""
@@ -284,9 +284,10 @@ extension RouteMacro {
 				var paramExtractions: [String] = []
 				for param in route.parameters {
 					// Use guard + URLParser.optionalParam<T> for optional extraction
-					paramExtractions.append(
-						"guard let \(param.escapedName): \(param.type) = URLParser.optionalParam(\"\(param.name)\", from: queryItems) else { return nil }"
-					)
+					let guardStatement =
+						"guard let \(param.escapedName): \(param.type) = " +
+						"URLParser.optionalParam(\"\(param.name)\", from: queryItems) else { return nil }"
+					paramExtractions.append(guardStatement)
 				}
 				let paramNames = route.parameters.map { "\($0.name): \($0.escapedName)" }.joined(separator: ", ")
 				caseClauses.append(

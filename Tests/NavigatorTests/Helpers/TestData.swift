@@ -17,7 +17,6 @@ import Foundation
 /// - Error scenarios
 /// - Performance test data
 struct TestData {
-
     // MARK: - Common Routes
 
     /// Standard test routes covering all major scenarios
@@ -112,7 +111,6 @@ struct TestData {
         (.profile, [.profile(userId: "main_user"), .profile(userId: "other_user")])
     ]
 
-
     // MARK: - Parameter Combinations
 
     /// Various parameter type combinations for testing
@@ -159,7 +157,7 @@ struct TestData {
 
     /// Large dataset for performance testing
     static func generatePerformanceRoutes(count: Int) -> [MockRoute] {
-        return (0..<count).map { i in
+        (0..<count).map { i in
             let routeTypes: [MockRoute] = [
                 .home,
                 .profile(userId: "perf_user_\(i)"),
@@ -172,7 +170,7 @@ struct TestData {
 
     /// Large query parameter set for performance testing
     static func generatePerformanceQueryItems(count: Int) -> [URLQueryItem] {
-        return (0..<count).map { i in
+        (0..<count).map { i in
             URLQueryItem(name: "param\(i)", value: "value\(i)")
         }
     }
@@ -181,7 +179,7 @@ struct TestData {
 
     /// Validates that a URL matches expected format
     static func validateURL(_ url: URL, scheme: String, host: String) -> Bool {
-        return url.scheme == scheme && url.host == host
+        url.scheme == scheme && url.host == host
     }
 
     /// Validates that query items contain expected parameters
@@ -210,6 +208,6 @@ struct TestData {
 
     /// Generates random tab
     static func randomTab() -> MockTab {
-        return MockTab.allCases.randomElement()!
+        MockTab.allCases.randomElement()!
     }
 }
